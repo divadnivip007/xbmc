@@ -549,7 +549,7 @@ void CXBMCRenderManager::FlipPage(volatile bool& bStop, double timestamp /* = 0L
   {
     if(!m_presentevent.WaitMSec(100) && GetPresentTime() > timeout && !bStop)
     {
-      CLog::Log(LOGWARNING, "CRenderManager::FlipPage - timeout waiting for previous frame");
+      CLog::Log(LOGWARNING, "CRenderManager::FlipPage - timeout waiting for previous frame - PresentTime: %d - Timeout: %d", GetPresentTime(), timeout);
       return;
     }
   };
@@ -610,8 +610,8 @@ void CXBMCRenderManager::FlipPage(volatile bool& bStop, double timestamp /* = 0L
   {
     if(!m_presentevent.WaitMSec(100) && GetPresentTime() > timeout && !bStop)
     {
-      CLog::Log(LOGWARNING, "CRenderManager::FlipPage - timeout waiting for flip to complete");
-      return;
+      CLog::Log(LOGWARNING, "CRenderManager::FlipPage - timeout waiting for flip to complete - PresentTime: %d - Timeout: %d", GetPresentTime(), timeout);
+      //return;
     }
   }
 }
